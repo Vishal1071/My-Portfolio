@@ -1,0 +1,21 @@
+.projects {
+  padding: 4rem 0;
+}
+.projects .container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+
+
+
+@media (max-width: 480px) {
+  .btn-live {
+    display: block;
+    width: calc(100% - 32px); /* leaves 16px space each side — change as needed */
+    margin: 10px auto;
+    min-width: 0;            /* allow it to fit the screen */
+    border-radius: 8px;
+  }
+}
