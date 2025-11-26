@@ -30,7 +30,7 @@ const About = () => {
 
   const handleDownload = () => {
     // Direct download link - convert Google Drive link to direct download
-    const fileId = '1Oyrda7ExmJzJBOQy1BrE6W61cwntct2E';
+    const fileId = '1jPoSEvSPS8Loz28GESXO4ovq30_H2MNm';
     const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
 
     // Create a temporary link and trigger download
