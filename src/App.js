@@ -1,5 +1,7 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+// import React from 'react';
+// import { Routes, NavLink } from 'react-router-dom';
+
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -13,15 +15,15 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <section id='home'> <Home /> </section>
+        <section id='about'> <About /> </section>
+        <section id='projects'> <Projects /> </section>
+        <section id='services'> <Services /> </section>
+        <section id='contact'> <Contact /> </section>
       </main>
+
       <Footer />
     </div>
   );

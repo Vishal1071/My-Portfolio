@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// import { Link} from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  // const location = useLocation();
 
   const navItems = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/services', label: 'Services' },
-    { path: '/contact', label: 'Contact' }
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'services', label: 'Services' },
+    { id: 'contact', label: 'Contact' }
   ];
 
   useEffect(() => {
@@ -24,34 +24,42 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location]);
+  // useEffect(() => {
+  //   setMobileMenuOpen(false);
+  // }, [location]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleScroll = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <nav className="nav container">
-        <Link to="/" className="logo">@Vishal's View</Link>
-        
+        <button  className="logo" onClick={() => handleScroll('home')}>@Vishal's View</button>
+
         <ul className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
           {navItems.map(item => (
-            <li key={item.path}>
-              <Link 
-                to={item.path} 
-                className={`nav-link ${location.pathname === item.path ? 'active' : ''}`}
-              >
+            <li key={item.id}>
+              <button
+                className="nav-link"
+                onClick={() => handleScroll(item.id)}
+                >
                 {item.label}
-              </Link>
+              </button>
             </li>
           ))}
         </ul>
-        
-        <div 
-          className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`} 
+
+        <div
+          className={`mobile-menu ${mobileMenuOpen ? 'active' : ''}`}
           onClick={toggleMobileMenu}
         >
           <span></span>

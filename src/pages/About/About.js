@@ -29,18 +29,19 @@ const About = () => {
   ];
 
   const handleDownload = () => {
-    // Direct download link - convert Google Drive link to direct download
-    const fileId = '1jPoSEvSPS8Loz28GESXO4ovq30_H2MNm';
-    const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+  const driveUrl = "https://drive.google.com/file/d/148PNRUSkRiVH8_Vnc7fAp27NXV7XA4w9/view?usp=drivesdk";
 
-    // Create a temporary link and trigger download
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = 'CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const fileId = driveUrl.split('/d/')[1].split('/')[0];
+
+  const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+  const link = document.createElement('a');
+  link.href = downloadUrl;
+  link.download = 'CV.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
   return (
     <section className="about">
